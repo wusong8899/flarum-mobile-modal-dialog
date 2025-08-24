@@ -76,7 +76,7 @@
         "analyse:phpstan": "Run static analysis"
     },
     "require-dev": {
-        "flarum/testing": "^2.0",
-        "flarum/phpstan": "^2.0"
+        "flarum/testing": "^1.0",
+        "flarum/phpstan": "^1.0"
     }
 }

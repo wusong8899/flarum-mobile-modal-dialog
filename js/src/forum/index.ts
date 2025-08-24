@@ -9,18 +9,13 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
   console.log('[wusong8899/flarum-mobile-modal-dialog] Mobile Modal customization loaded');
 
   // 修复移动端Modal事件处理
-  extend(Modal.prototype, 'oninit', function() {
+  extend(Modal.prototype, 'hide', function(original) {
     // 仅在移动端应用
     if (window.matchMedia('(max-width: 767px)').matches) {
-      console.log('Applying mobile modal fixes...');
-      
-      // 确保hide方法正确工作
-      const originalHide = this.hide.bind(this);
-      this.hide = () => {
-        console.log('Mobile modal closing...');
-        originalHide();
-      };
+      console.log('Mobile modal closing...');
     }
+    // 调用原始方法以确保模态框实际关闭
+    original();
   });
 
   // 修复背景点击和ESC键事件
@@ -48,16 +43,20 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
   });
 
   // 修复ESC键处理
-  extend(ModalManager.prototype, 'handleEscPress', function(e) {
+  extend(ModalManager.prototype, 'handleEscPress', function(original, e) {
     if (window.matchMedia('(max-width: 767px)').matches) {
       console.log('Mobile ESC key pressed');
     }
+    // 调用原始方法以确保模态框实际关闭
+    original(e);
   });
 
   // 修复背景点击处理
-  extend(ModalManager.prototype, 'handlePossibleBackdropClick', function(e) {
+  extend(ModalManager.prototype, 'handlePossibleBackdropClick', function(original, e) {
     if (window.matchMedia('(max-width: 767px)').matches) {
       console.log('Mobile backdrop click detected');
     }
+    // 调用原始方法以确保模态框实际关闭
+    original(e);
   });
 });

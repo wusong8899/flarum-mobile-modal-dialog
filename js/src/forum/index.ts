@@ -46,7 +46,7 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
       console.log('Mobile ESC key pressed');
       // 在移动端确保模态框关闭
       if (this.attrs.state.modal) {
-        this.attrs.state.modal.hide();
+        this.animateHide();
       }
     }
   });
@@ -57,7 +57,7 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
       console.log('Mobile backdrop click detected');
       // 在移动端确保模态框关闭
       if (this.attrs.state.modal) {
-        this.attrs.state.modal.hide();
+        this.animateHide();
       }
     }
   });

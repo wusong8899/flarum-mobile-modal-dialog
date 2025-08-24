@@ -13,8 +13,8 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
     // 仅在移动端应用
     if (window.matchMedia('(max-width: 767px)').matches) {
       console.log('Mobile modal closing...');
-      this.hide();
     }
+    // 注意：不要在这里调用 this.hide()，会导致无限递归
   });
 
   // 修复背景点击和ESC键事件
@@ -45,10 +45,8 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
   extend(ModalManager.prototype, 'handleEscPress', function (e) {
     if (window.matchMedia('(max-width: 767px)').matches) {
       console.log('Mobile ESC key pressed');
-      // 在移动端确保模态框关闭
-      if (this.attrs.state.modal) {
-        this.animateHide();
-      }
+      // 使用正确的API关闭模态框
+      app.modal.close();
     }
   });
 
@@ -56,10 +54,8 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
   extend(ModalManager.prototype, 'handlePossibleBackdropClick', function (e) {
     if (window.matchMedia('(max-width: 767px)').matches) {
       console.log('Mobile backdrop click detected');
-      // 在移动端确保模态框关闭
-      if (this.attrs.state.modal) {
-        this.animateHide();
-      }
+      // 使用正确的API关闭模态框
+      app.modal.close();
     }
   });
 });

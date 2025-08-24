@@ -1,0 +1,102 @@
+@media @phone {
+
+  .Modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1040;
+  }
+
+  .ModalManager {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 1050;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 20px !important;
+
+    .ModalManager-invisibleBackdrop {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      z-index: -1 !important;
+      background: transparent !important;
+    }
+  }
+
+  .Modal.modal-dialog {
+    position: relative !important;
+    width: 400px !important;
+    max-width: 90vw !important;
+    max-height: 85vh !important;
+    min-height: 200px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .Modal-content {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    .Modal-header {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .Modal-body {
+      overflow-y: auto !important;
+      flex: 1 1 auto !important;
+      max-height: none !important;
+    }
+
+    form {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+
+      >.Modal-body,
+      >div:not(.Modal-header):not(.Modal-alert):not(.Modal-footer) {
+        overflow-y: auto !important;
+        flex: 1 1 auto !important;
+      }
+    }
+  }
+
+  .Modal-close {
+    position: relative !important;
+    z-index: 1060 !important;
+  }
+
+  .Modal-alert {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .Modal-footer {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+}

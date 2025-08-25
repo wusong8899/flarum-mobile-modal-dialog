@@ -29,17 +29,4 @@ app.initializers.add('wusong8899-mobile-modal-dialog', () => {
     }
   });
 
-  // 修复ESC键处理
-  extend(ModalManager.prototype, 'handleEscPress', function (e) {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      app.modal.close();
-    }
-  });
-
-  // 修复背景点击处理
-  extend(ModalManager.prototype, 'handlePossibleBackdropClick', function (e) {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      app.modal.close();
-    }
-  });
 });
